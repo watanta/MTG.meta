@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Deck list!</h1>
+
+<h1>{% for deck in decks%}
+    {{deck}}
+    {% endfor %}
+</h1>
+{% endblock %}
