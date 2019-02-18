@@ -10,6 +10,9 @@ flask = "*"
 flask-pymongo = "*"
 flask-bootstrap = "*"
 flask-paginate = "*"
+mtgsdk = "*"
+flask-wtf = "*"
+webob = "*"
 
 [requires]
 python_version = "3.6"

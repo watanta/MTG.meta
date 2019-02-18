@@ -1,9 +1,35 @@
 {% extends 'bootstrap/base.html' %}
 {% block content %}
 <h1>Deck list!</h1>
-<h2>{{all_amount}} decks here!!!</h2>
+<h2>{{ total }} decks here!!!</h2>
 {{ pagination.links}}
+<p>session['red']</p>{{session['red']}}
+<p>session['white']</p>{{session['white']}}
+<p>session['green']</p>{{session['green']}}
+<p>session['blue']</p>{{session['blue']}}
+<p>session['black']</p>{{session['black']}}
+
 <main role="main">
+
+  <h1>Form</h1>
+  <form method="post">
+      <br>
+      {{ form.hidden_tag() }}
+      <br>
+      {{ form.freeword.label }}{{form.freeword}}
+      <br>
+      {{ form.red.label() }}{{ form.red }}
+      <br>
+      {{ form.green.label() }}{{ form.green }}
+      <br>
+      {{ form.white.label() }}{{ form.white }}
+      <br>
+      {{ form.blue.label() }}{{ form.blue }}
+      <br>
+      {{ form.black.label() }}{{ form.black }}
+      <br>
+      {{ form.submit() }}
+  </form>
 
   <section class="jumbotron text-center">
     <div class="container">
