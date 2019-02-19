@@ -23,7 +23,12 @@ def get_decks(offset=0, per_page=10, query=None):
 
     return mongo.db.decks.find(query).skip(offset).limit(per_page)
 
-
+def get_query():
+    #現在のsessionからqueryを作る
+    query = {'red': session['red'], 'white': session['white'], 'green': session['green'],
+             'blue': session['blue'], 'black': session['black'],
+             'deckname': {'$regex': session['freeword']}}
+    return query
 
 class Deckform(FlaskForm):
     freeword = StringField('freeword')
@@ -48,8 +53,7 @@ def decklist():
         page, per_page, offset = get_page_args(page_parameter='page',
                                                per_page_parameter='per_page')
 
-        query = {'red': session['red'], 'white': session['white'], 'green': session['green'],
-                                'blue': session['blue'], 'black': session['black']}
+        query = get_query()
 
         total = mongo.db.decks.find(query).count()
         pagination_decks = get_decks(offset=offset, per_page=per_page, query=query)
@@ -68,8 +72,7 @@ def decklist():
     page, per_page, offset = get_page_args(page_parameter='page',
                                            per_page_parameter='per_page')
 
-    query = {'red': session['red'], 'white': session['white'], 'green': session['green'],
-             'blue': session['blue'], 'black': session['black']}
+    query = get_query()
 
     total = mongo.db.decks.find(query).count()
     pagination_decks = get_decks(offset=offset, per_page=per_page,query=query)
@@ -83,9 +86,6 @@ def decklist():
                            form=form,
                            total=total
                            )
-
-
-
 
 @app.route('/form', methods=['GET','POST'])
 def form():
@@ -104,10 +104,6 @@ def form():
 @app.route('/thankyou', methods=['GET'])
 def thankyou():
     return render_template('thankyou.html', session=session)
-
-
-
-
 
 
 if __name__ == "__main__":
