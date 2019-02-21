@@ -5,7 +5,7 @@ from flask_paginate import Pagination, get_page_parameter, get_page_args
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, RadioField, SelectField, SelectMultipleField, BooleanField, FormField, FieldList
 from wtforms.validators import DataRequired
-
+from bson.objectid import ObjectId
 
 app = Flask(__name__) #インスタンス生成
 app.config['MONGO_URI'] = 'mongodb://localhost:27017/mtga'
@@ -46,13 +46,6 @@ def get_decks_image(decks):
         img_url = get_deck_image(deck)
         img_urls.append(img_url)
     return img_urls
-
-
-
-
-
-
-
 
 
 class Deckform(FlaskForm):
@@ -114,25 +107,16 @@ def decklist():
                            total=total
                            )
 
+@app.route("/deckdetail/<id>", methods=['GET'])
+def deckdetail(id):
 
-@app.route('/form', methods=['GET','POST'])
-def form():
-    form = Deckform()
-    if form.validate_on_submit():
-        session['freeword'] = form.freeword.data
-        session['red'] = form.red.data
-        session['white'] = form.white.data
-        session['green'] = form.green.data
-        session['blue'] = form.blue.data
-        session['black'] = form.black.data
-        return redirect(url_for('thankyou'))
-
-    return render_template('form.html', form=form)
+    deck = mongo.db.decks.find_one({'_id': ObjectId(str(id))})
+    print(deck['deckname'])
+    return render_template('deckdetail.html', deck=deck)
 
 
-@app.route('/thankyou', methods=['GET'])
-def thankyou():
-    return render_template('thankyou.html', session=session)
+
+
 
 
 if __name__ == "__main__":
