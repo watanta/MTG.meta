@@ -15,7 +15,7 @@
     <tbody>
     {% for card_info in main_cardinfos %}
     <tr>
-        <th>{{card_info['name']}}</th>
+        <th><a href={{url_for('carddetail', id=card_info['_id'])}} class="card-link">{{card_info['name']}}</a></th>
         <th>{{card_info['type']}}</th>
         <th>{{card_info['color_identity']}}</th>
         <th>{{card_info['amount']}}</th>
@@ -38,7 +38,7 @@
     <tbody>
     {% for card_info in side_cardinfos %}
     <tr>
-        <th>{{card_info['name']}}</th>
+        <th><a href={{url_for('carddetail', id=card_info['_id'])}} class="card-link">{{card_info['name']}}</a></th>
         <th>{{card_info['type']}}</th>
         <th>{{card_info['color_identity']}}</th>
         <th>{{card_info['amount']}}</th>

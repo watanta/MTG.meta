@@ -158,8 +158,15 @@ def deckdetail(id):
 
     bar = create_plot()
 
-
     return render_template('deckdetail.html', deck=deck, main_cardinfos=main_cardinfos, side_cardinfos=side_cardinfos, plot=bar)
+
+
+@app.route("/carddetail/<id>", methods=["GET"])
+def carddetail(id):
+
+    card = mongo.db.cards.find_one({'_id': ObjectId(str(id))})
+
+    return render_template('carddetail.html', card=card)
 
 
 if __name__ == "__main__":
