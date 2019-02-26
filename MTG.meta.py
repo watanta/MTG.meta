@@ -6,6 +6,11 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, RadioField, SelectField, SelectMultipleField, BooleanField, FormField, FieldList
 from wtforms.validators import DataRequired
 from bson.objectid import ObjectId
+import plotly
+import plotly.graph_objs as go
+import pandas as pd
+import numpy as np
+import json
 
 app = Flask(__name__) #インスタンス生成
 app.config['MONGO_URI'] = 'mongodb://localhost:27017/mtga'
@@ -15,6 +20,11 @@ mongo = PyMongo(app)
 @app.route("/")
 def hello():
   return "Hello World!"
+
+@app.route("/index")
+def index():
+    bar = create_plot()
+    return render_template('index.html', plot=bar)
 
 
 def get_decks(offset=0, per_page=9, query=None):
@@ -107,16 +117,49 @@ def decklist():
                            total=total
                            )
 
+def create_plot():
+
+
+    N = 40
+    x = np.linspace(0, 1, N)
+    y = np.random.randn(N)
+    df = pd.DataFrame({'x': x, 'y': y}) # creating a sample dataframe
+
+
+    data = [
+        go.Bar(
+            x=df['x'], # assign x as the dataframe column 'x'
+            y=df['y']
+        )
+    ]
+
+    graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
+
+    return graphJSON
+
+
 @app.route("/deckdetail/<id>", methods=['GET'])
 def deckdetail(id):
 
     deck = mongo.db.decks.find_one({'_id': ObjectId(str(id))})
-    print(deck['deckname'])
-    return render_template('deckdetail.html', deck=deck)
+
+    main_cardinfos = []
+    for cardname, amount in deck['main'].items():
+        card = mongo.db.cards.find_one({'name': cardname})
+        card['amount'] = amount
+        main_cardinfos.append(card)
+
+    side_cardinfos = []
+    if deck['side'] is not None:
+        for cardname, amount in deck['side'].items():
+            card = mongo.db.cards.find_one({'name': cardname})
+            card['amount'] = amount
+            side_cardinfos.append(card)
+
+    bar = create_plot()
 
 
-
-
+    return render_template('deckdetail.html', deck=deck, main_cardinfos=main_cardinfos, side_cardinfos=side_cardinfos, plot=bar)
 
 
 if __name__ == "__main__":

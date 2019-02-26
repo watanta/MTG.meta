@@ -13,6 +13,9 @@ flask-paginate = "*"
 mtgsdk = "*"
 flask-wtf = "*"
 webob = "*"
+plotly = "*"
+pandas = "*"
+numpy = "*"
 
 [requires]
 python_version = "3.6"

@@ -1,5 +1,59 @@
 {% extends 'base.html' %}{%  block content %}
 
-{{ deck['deckname'] }}
+<h1>{{deck['deckname']}}</h1>
+
+<h2>Main deck</h2>
+<table class="table table-striped table-sm">
+    <thead>
+    <tr>
+        <th>cardname</th>
+        <th>type</th>
+        <th>color</th>
+        <th>amount</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for card_info in main_cardinfos %}
+    <tr>
+        <th>{{card_info['name']}}</th>
+        <th>{{card_info['type']}}</th>
+        <th>{{card_info['color_identity']}}</th>
+        <th>{{card_info['amount']}}</th>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+<h2>Side deck</h2>
+<table class="table table-striped table-sm">
+    <thead>
+    <tr>
+        <th>cardname</th>
+        <th>type</th>
+        <th>color</th>
+        <th>amount</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for card_info in side_cardinfos %}
+    <tr>
+        <th>{{card_info['name']}}</th>
+        <th>{{card_info['type']}}</th>
+        <th>{{card_info['color_identity']}}</th>
+        <th>{{card_info['amount']}}</th>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+<div class="chart" id="bargraph">
+    <script>
+        var graphs = {{plot | safe}};
+        Plotly.plot('bargraph',graphs,{});
+    </script>
+</div>
 
 {% endblock %}
+
