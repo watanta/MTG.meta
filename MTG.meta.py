@@ -161,12 +161,22 @@ def deckdetail(id):
     return render_template('deckdetail.html', deck=deck, main_cardinfos=main_cardinfos, side_cardinfos=side_cardinfos, plot=bar)
 
 
+def get_used_decks(card):
+    #cardがmainに含まれるdeckをすべて返す
+    decks = []
+    for deck in mongo.db.decks.find({'main_cardlist': {'$in': [card['name']]}}):
+        decks.append(deck)
+
+    return decks
+
+
 @app.route("/carddetail/<id>", methods=["GET"])
 def carddetail(id):
 
     card = mongo.db.cards.find_one({'_id': ObjectId(str(id))})
+    decks = get_used_decks(card)
 
-    return render_template('carddetail.html', card=card)
+    return render_template('carddetail.html', card=card, decks=decks)
 
 
 if __name__ == "__main__":
