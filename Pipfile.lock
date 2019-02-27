@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "59d21c58ad1d6ec4f7fc82b7b84f0e520ed8f9cb6710ac3045dc8bc2aa24d865"
+            "sha256": "a99c95a551a066b278ad23c9c81e6e28d291c5415826954b4f1a29885c29f48b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -489,6 +489,13 @@
                 "sha256:a988718abfad80b6b157acce7bf130a30876d27603738ac39f140993246b25b3"
             ],
             "version": "==2.19"
+        },
+        "pyfpgrowth": {
+            "hashes": [
+                "sha256:a3e5780385241d90d3ae5cabcca767eb65427b0a908014d42164b3ea8899f1d0"
+            ],
+            "index": "pypi",
+            "version": "==1.0"
         },
         "pymongo": {
             "hashes": [
