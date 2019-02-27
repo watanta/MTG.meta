@@ -175,8 +175,9 @@ def carddetail(id):
 
     card = mongo.db.cards.find_one({'_id': ObjectId(str(id))})
     decks = get_used_decks(card)
+    total_decks = len(decks)
 
-    return render_template('carddetail.html', card=card, decks=decks)
+    return render_template('carddetail.html', card=card, decks=decks, total_decks=total_decks)
 
 
 if __name__ == "__main__":

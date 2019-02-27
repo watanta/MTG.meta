@@ -8,15 +8,15 @@
         <img src={{card['image_url']}} class="rounded" width="400" height="559">
     </div>
     <div class="col-sm-4">
-        <h2>This card used in...</h2>
-        {% for deck in decks %}
+        <h2>This card used in {{total_decks}} decks!!</h2>
+        {% for deck in decks[:9] %}
         <a href={{url_for('deckdetail', id=deck['_id'])}} class="deck-link">{{deck['deckname']}}</a>
+        <br>
         {% endfor %}
     </div>
     <div class="col-sm-4">
         3
     </div>
 </div>
-
 
 {% endblock %}

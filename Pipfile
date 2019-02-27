@@ -16,6 +16,8 @@ webob = "*"
 plotly = "*"
 pandas = "*"
 numpy = "*"
+orange3-associate = "*"
+orange3 = "*"
 
 [requires]
 python_version = "3.6"
