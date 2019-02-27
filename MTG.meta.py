@@ -170,6 +170,16 @@ def get_used_decks(card):
     return decks
 
 
+def get_association(card_id):
+    rules = []
+    for rule in mongo.db.association.find({'LHS': card_id}):
+        rules.append(rule)
+        df = pd.DataFrame(rules).sort_values('confidence', ascending=False)
+
+    print(df)
+    return df
+
+
 @app.route("/carddetail/<id>", methods=["GET"])
 def carddetail(id):
 
@@ -177,7 +187,9 @@ def carddetail(id):
     decks = get_used_decks(card)
     total_decks = len(decks)
 
-    return render_template('carddetail.html', card=card, decks=decks, total_decks=total_decks)
+    association = get_association(card['Inc_id'])
+
+    return render_template('carddetail.html', card=card, decks=decks, total_decks=total_decks, association=association)
 
 
 if __name__ == "__main__":

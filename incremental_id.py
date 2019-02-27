@@ -19,3 +19,4 @@ i = 0
 for document in cursor:
     collection.update({'_id': ObjectId(document['_id'])}, {"$set": {'Inc_id': i}})
     i += 1
+

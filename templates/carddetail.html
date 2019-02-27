@@ -19,4 +19,16 @@
     </div>
 </div>
 
+{% for _,rule in association.iterrows() %}
+    {% for cardname in rule['LHS'] %}
+        {{cardname}}
+    {% endfor %}
+<p>→</p>
+    {% for cardname in rule['RHS'] %}
+        {{cardname}}
+    {% endfor %}
+<p>{{rule['confidence']}}</p>
+{% endfor %}
+
+
 {% endblock %}
