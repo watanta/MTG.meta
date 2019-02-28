@@ -10,7 +10,7 @@
     <div class="col-sm-4">
         <h2>This card used in {{total_decks}} decks!!</h2>
         {% for deck in decks[:9] %}
-        <a href={{url_for('deckdetail', id=deck['_id'])}} class="deck-link">{{deck['deckname']}}</a>
+        <a href={{url_for('deckdetail', id=deck['Inc_id'])}} class="deck-link">{{deck['deckname']}}</a>
         <br>
         {% endfor %}
     </div>
@@ -19,16 +19,35 @@
     </div>
 </div>
 
-{% for _,rule in association.iterrows() %}
-    {% for cardname in rule['LHS'] %}
-        {{cardname}}
+<h2>association</h2>
+<table class="table table-striped table-sm">
+    <thead>
+    <tr>
+        <th>if this card be use in deck...</th>
+        <th>this card also used.</th>
+        <th>confidence</th>th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for _,rule in association.iterrows() %}
+    <tr>
+        <th>
+            {% for card_Inc_id in rule['LHS'] %}
+                <a href={{url_for('carddetail', id=card_Inc_id)}} class="card-link">{{card_Inc_id}}</a>
+            {% endfor %}
+        </th>
+        <th>
+            {% for card_Inc_id in rule['RHS'] %}
+                <a href={{url_for('carddetail', id=card_Inc_id)}} class="card-link">{{card_Inc_id}}</a>
+            {% endfor %}
+        </th>
+        <th>
+            {{rule['confidence']}}
+        </th>
+    </tr>
     {% endfor %}
-<p>→</p>
-    {% for cardname in rule['RHS'] %}
-        {{cardname}}
-    {% endfor %}
-<p>{{rule['confidence']}}</p>
-{% endfor %}
 
+    </tbody>
+</table>
 
 {% endblock %}

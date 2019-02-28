@@ -141,7 +141,7 @@ def create_plot():
 @app.route("/deckdetail/<id>", methods=['GET'])
 def deckdetail(id):
 
-    deck = mongo.db.decks.find_one({'_id': ObjectId(str(id))})
+    deck = mongo.db.decks.find_one({'Inc_id': int(id)})
 
     main_cardinfos = []
     for cardname, amount in deck['main'].items():
@@ -176,14 +176,15 @@ def get_association(card_id):
         rules.append(rule)
         df = pd.DataFrame(rules).sort_values('confidence', ascending=False)
 
-    print(df)
     return df
+
+
 
 
 @app.route("/carddetail/<id>", methods=["GET"])
 def carddetail(id):
 
-    card = mongo.db.cards.find_one({'_id': ObjectId(str(id))})
+    card = mongo.db.cards.find_one({'Inc_id': int(id)})
     decks = get_used_decks(card)
     total_decks = len(decks)
 
