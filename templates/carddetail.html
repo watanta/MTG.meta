@@ -32,13 +32,13 @@
     {% for _,rule in association.iterrows() %}
     <tr>
         <th>
-            {% for card_Inc_id in rule['LHS'] %}
-                <a href={{url_for('carddetail', id=card_Inc_id)}} class="card-link">{{card_Inc_id}}</a>
+            {% for card in rule['LHS_card'] %}
+                <img src={{card['image_url']}} width="200" height="280">
             {% endfor %}
         </th>
         <th>
-            {% for card_Inc_id in rule['RHS'] %}
-                <a href={{url_for('carddetail', id=card_Inc_id)}} class="card-link">{{card_Inc_id}}</a>
+            {% for card in rule['RHS_card'] %}
+                <img src={{card['image_url']}} width="200" height="280">
             {% endfor %}
         </th>
         <th>

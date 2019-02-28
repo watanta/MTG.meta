@@ -5,8 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MTG.meta.py" beforeDir="false" afterPath="$PROJECT_DIR$/MTG.meta.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/carddetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/carddetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/deckdetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/deckdetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/decklist.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/decklist.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MTG.meta.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="178" selection-start-line="178" selection-end-line="178" />
+            <state relative-caret-position="370">
+              <caret line="210" column="49" lean-forward="true" selection-start-line="210" selection-start-column="49" selection-end-line="210" selection-end-column="49" />
               <folding>
                 <element signature="e#16#93#0" expanded="true" />
               </folding>
@@ -31,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/carddetail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="42" column="13" lean-forward="true" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+            <state relative-caret-position="345">
+              <caret line="38" column="12" lean-forward="true" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -41,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/templates/deckdetail.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="17" column="113" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="113" />
+              <caret line="17" column="113" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="113" />
             </state>
           </provider>
         </entry>
@@ -92,7 +90,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="75" />
+    <option name="x" value="65" />
     <option name="y" value="24" />
     <option name="width" value="928" />
     <option name="height" value="1056" />
@@ -102,6 +100,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -118,7 +117,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -167,10 +165,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="75" y="24" width="928" height="1056" extended-state="4" />
+    <frame x="65" y="24" width="928" height="1056" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.35327312" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3611738" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -181,8 +179,8 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32941177" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32941177" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.83972913" visible="true" weight="0.32941177" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.16027088" side_tool="true" visible="true" weight="0.32941177" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.83860046" visible="true" weight="0.32941177" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.16139954" side_tool="true" visible="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.8408578" weight="0.32941177" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -250,16 +248,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MTG.meta.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="178" selection-start-line="178" selection-end-line="178" />
-          <folding>
-            <element signature="e#16#93#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/decklist.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
@@ -273,14 +261,24 @@
     <entry file="file://$PROJECT_DIR$/templates/deckdetail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="17" column="113" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="113" />
+          <caret line="17" column="113" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MTG.meta.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="210" column="49" lean-forward="true" selection-start-line="210" selection-start-column="49" selection-end-line="210" selection-end-column="49" />
+          <folding>
+            <element signature="e#16#93#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/carddetail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="42" column="13" lean-forward="true" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+        <state relative-caret-position="345">
+          <caret line="38" column="12" lean-forward="true" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
         </state>
       </provider>
     </entry>

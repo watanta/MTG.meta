@@ -178,6 +178,26 @@ def get_association(card_id):
 
     return df
 
+def get_association_cards(association):
+    # associationのdictから対応するcardを引っ張ってくる
+
+    all_LHS = []
+    all_RHS = []
+    for key, row in association.iterrows():
+        LHS = []
+        RHS = []
+        for id in row['LHS']:
+            card = mongo.db.cards.find_one({'Inc_id': id})
+            LHS.append(card)
+        for id in row['RHS']:
+            card = mongo.db.cards.find_one({'Inc_id': id})
+            RHS.append(card)
+        all_LHS.append(LHS)
+        all_RHS.append(RHS)
+
+    df = pd.DataFrame({'LHS_card': all_LHS, 'RHS_card': all_RHS})
+    return df
+
 
 
 
@@ -189,6 +209,10 @@ def carddetail(id):
     total_decks = len(decks)
 
     association = get_association(card['Inc_id'])
+
+    card_info = get_association_cards(association)
+
+    association = pd.concat((association, card_info), axis=1)
 
     return render_template('carddetail.html', card=card, decks=decks, total_decks=total_decks, association=association)
 
