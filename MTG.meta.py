@@ -169,11 +169,14 @@ def get_used_decks(card):
 
 def get_association(card_id):
     rules = []
+
     for rule in mongo.db.association.find({'LHS': card_id}):
         rules.append(rule)
-        df = pd.DataFrame(rules).sort_values('confidence', ascending=False)
 
-    return df
+    if len(rules) != 0:
+        df = pd.DataFrame(rules).sort_values('confidence', ascending=False)
+        return df
+
 
 def get_association_cards(association):
     # associationのdictから対応するcardを引っ張ってくる
@@ -196,8 +199,6 @@ def get_association_cards(association):
     return df
 
 
-
-
 @app.route("/carddetail/<id>", methods=["GET"])
 def carddetail(id):
 
@@ -206,10 +207,15 @@ def carddetail(id):
     total_decks = len(decks)
 
     association = get_association(card['Inc_id'])
+    print(association)
 
-    card_info = get_association_cards(association)
+    #associationがcardによってはない
+    if association is not None:
+        card_info = get_association_cards(association)
+        association = pd.concat((association, card_info), axis=1)
+    else:
+        association = pd.DataFrame([])
 
-    association = pd.concat((association, card_info), axis=1)
 
     return render_template('carddetail.html', card=card, decks=decks, total_decks=total_decks, association=association)
 
