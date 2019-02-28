@@ -17,14 +17,11 @@ app.config['MONGO_URI'] = 'mongodb://localhost:27017/mtga'
 app.secret_key = 'hogehoge'
 mongo = PyMongo(app)
 
-@app.route("/")
-def hello():
-  return "Hello World!"
 
-@app.route("/index")
+
+@app.route("/")
 def index():
-    bar = create_plot()
-    return render_template('index.html', plot=bar)
+    return render_template('index.html')
 
 
 def get_decks(offset=0, per_page=9, query=None):

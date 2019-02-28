@@ -33,12 +33,16 @@
     <tr>
         <th>
             {% for card in rule['LHS_card'] %}
+                <a href={{url_for('carddetail', id=card['Inc_id'])}}>
                 <img src={{card['image_url']}} width="200" height="280">
+                </a>
             {% endfor %}
         </th>
         <th>
             {% for card in rule['RHS_card'] %}
+                <a href={{url_for('carddetail', id=card['Inc_id'])}}>
                 <img src={{card['image_url']}} width="200" height="280">
+                </a>
             {% endfor %}
         </th>
         <th>
