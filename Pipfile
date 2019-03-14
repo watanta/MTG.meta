@@ -19,6 +19,7 @@ numpy = "*"
 orange3-associate = "*"
 orange3 = "*"
 pyfpgrowth = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.6"
